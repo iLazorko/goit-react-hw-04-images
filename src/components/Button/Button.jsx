@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { LoadMoreBtn } from './Button.styled.js';
 
 export const Button = ({ moreImages }) => {
@@ -6,4 +7,8 @@ export const Button = ({ moreImages }) => {
       Load more
     </LoadMoreBtn>
   );
+};
+
+Button.propTypes = {
+  moreImages: PropTypes.func.isRequired,
 };

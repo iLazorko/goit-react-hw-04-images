@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import { Header, Form, SearchButton, Input } from './Searchbar.styled.js';
 
 export const Searchbar = ({ searchValue, updateStateQuery }) => {
@@ -40,4 +41,9 @@ export const Searchbar = ({ searchValue, updateStateQuery }) => {
       </Form>
     </Header>
   );
+};
+
+Searchbar.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+  updateStateQuery: PropTypes.func.isRequired,
 };

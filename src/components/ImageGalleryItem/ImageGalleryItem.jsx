@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Item, ItemImg } from './ImageGalleryItem.styled.js';
 
 export const ImageGalleryItem = ({
@@ -9,4 +10,13 @@ export const ImageGalleryItem = ({
       <ItemImg src={smallImageURL} alt={tag} />
     </Item>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  image: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    tag: PropTypes.string,
+    smallImageURL: PropTypes.string.isRequired,
+  }),
+  onClick: PropTypes.func.isRequired,
 };
