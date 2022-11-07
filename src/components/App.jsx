@@ -28,11 +28,6 @@ export const App = () => {
   };
 
   useEffect(() => {
-    setImages([]);
-    setPage(1);
-  }, [searchValue]);
-
-  useEffect(() => {
     if (searchValue === '') {
       return;
     }
@@ -86,10 +81,7 @@ export const App = () => {
 
   return (
     <Wrapper>
-      <Searchbar
-        updateStateQuery={updateStateQuery}
-        searchValue={searchValue}
-      />
+      <Searchbar updateStateQuery={updateStateQuery} />
       {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
       {images.length > 0 && (
         <ImageGallery>

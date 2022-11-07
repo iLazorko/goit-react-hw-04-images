@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { Header, Form, SearchButton, Input } from './Searchbar.styled.js';
 
-export const Searchbar = ({ searchValue, updateStateQuery }) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const onChange = evt => {
-    setInputValue(evt.target.value);
-  };
-
+export const Searchbar = ({ updateStateQuery }) => {
   const onSubmit = e => {
     e.preventDefault();
+    const inputValue = e.currentTarget.elements.inputValue.value;
 
     if (inputValue === '') {
       return;
     }
 
-    if (inputValue === searchValue) {
-      setInputValue('');
-      return;
-    }
-
     updateStateQuery(inputValue);
-    setInputValue('');
+    e.currentTarget.reset();
   };
 
   return (
@@ -34,9 +23,8 @@ export const Searchbar = ({ searchValue, updateStateQuery }) => {
         </SearchButton>
         <Input
           type="text"
+          name="inputValue"
           placeholder="Search images and photos"
-          onChange={onChange}
-          value={inputValue}
         />
       </Form>
     </Header>
@@ -44,6 +32,5 @@ export const Searchbar = ({ searchValue, updateStateQuery }) => {
 };
 
 Searchbar.propTypes = {
-  searchValue: PropTypes.string.isRequired,
   updateStateQuery: PropTypes.func.isRequired,
 };
